@@ -1,0 +1,5 @@
+extend:
+  url: https://api.paywithextend.com/
+  email: ${BOT_EMAIL:}
+  password: ${BOT_PASSWORD:}
+  apiVersion: application/vnd.paywithextend.v2021-03-12+json
