@@ -3,7 +3,6 @@ package com.extend.virtualcardapi.controller;
 import com.extend.virtualcardapi.models.Transaction;
 import com.extend.virtualcardapi.service.TransactionService;
 import jakarta.websocket.server.PathParam;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

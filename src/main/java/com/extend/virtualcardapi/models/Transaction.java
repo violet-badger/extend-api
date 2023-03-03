@@ -2,7 +2,6 @@ package com.extend.virtualcardapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.immutables.value.Value;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter

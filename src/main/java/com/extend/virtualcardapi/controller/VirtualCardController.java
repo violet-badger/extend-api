@@ -4,7 +4,6 @@ import com.extend.virtualcardapi.models.Transaction;
 import com.extend.virtualcardapi.models.VirtualCard;
 import com.extend.virtualcardapi.service.TransactionService;
 import com.extend.virtualcardapi.service.VirtualCardService;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
