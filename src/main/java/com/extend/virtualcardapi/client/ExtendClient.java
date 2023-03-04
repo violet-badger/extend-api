@@ -6,10 +6,7 @@ import com.extend.virtualcardapi.models.response.LogInResponse;
 import com.extend.virtualcardapi.models.response.VirtualCardResponse;
 import com.extend.virtualcardapi.models.response.VirtualCardTransactionResponse;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +17,8 @@ public class ExtendClient {
     private static final String SIGN_IN = "signin";
     private static final String TRANSACTION = "transactions";
     private static final String VIRTUAL_CARDS = "virtualcards";
+
+    private static final String STATUS = "status";
 
     private final RestTemplate restTemplate;
     private HttpHeaders headers;
@@ -43,9 +42,10 @@ public class ExtendClient {
         return restTemplate.exchange(url + TRANSACTION + "/" + transactionId, HttpMethod.GET, entity, Transaction.class).getBody();
     }
 
-    public VirtualCardTransactionResponse getTransactions(String virtualCardId) {
+    public VirtualCardTransactionResponse getTransactions(String virtualCardId, Status status) {
         HttpEntity<Void> entity = new HttpEntity<>(getAuthorizedHeaders());
-        return restTemplate.exchange(url + VIRTUAL_CARDS + "/" + virtualCardId + "/" + TRANSACTION, HttpMethod.GET, entity, VirtualCardTransactionResponse.class).getBody();
+        return restTemplate.exchange(url + VIRTUAL_CARDS + "/" + virtualCardId + "/" + TRANSACTION + "?" + STATUS + "=" + status.getCode(),
+                HttpMethod.GET, entity, VirtualCardTransactionResponse.class).getBody();
     }
 
     public VirtualCardResponse getVirtualCard() {

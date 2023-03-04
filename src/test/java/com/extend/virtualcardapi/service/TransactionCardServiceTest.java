@@ -1,6 +1,7 @@
 package com.extend.virtualcardapi.service;
 
 import com.extend.virtualcardapi.client.ExtendClient;
+import com.extend.virtualcardapi.models.Status;
 import com.extend.virtualcardapi.models.Transaction;
 import com.extend.virtualcardapi.models.VirtualCard;
 import com.extend.virtualcardapi.models.response.VirtualCardResponse;
@@ -38,9 +39,9 @@ public class TransactionCardServiceTest {
         VirtualCardTransactionResponse virtualCardTransactionResponse = VirtualCardTransactionResponse.builder()
                 .transactions(transactions)
                 .build();
-        when(extendClient.getTransactions(any())).thenReturn(virtualCardTransactionResponse);
+        when(extendClient.getTransactions(any(), any())).thenReturn(virtualCardTransactionResponse);
 
-        Transaction[] transactionsFromResponse = transactionService.getVirtualCardTransactions("card_id");
+        Transaction[] transactionsFromResponse = transactionService.getVirtualCardTransactions("card_id", Status.PENDING );
 
         assertThat(transactionsFromResponse[0].getMerchantName().equals("Panda Express"));
         assertThat(transactionsFromResponse[1].getMerchantName().equals("Five Guys"));

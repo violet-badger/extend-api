@@ -1,5 +1,6 @@
 package com.extend.virtualcardapi.controller;
 
+import com.extend.virtualcardapi.models.Status;
 import com.extend.virtualcardapi.models.Transaction;
 import com.extend.virtualcardapi.models.VirtualCard;
 import com.extend.virtualcardapi.service.TransactionService;
@@ -28,7 +29,7 @@ public class VirtualCardController {
 
     @GetMapping(value = "/{id}/transactions", produces = "application/json")
     public ResponseEntity<Transaction[]> getTransactions(@PathVariable String id) {
-        return new ResponseEntity<>(transactionService.getVirtualCardTransactions(id), HttpStatus.OK);
+        return new ResponseEntity<>(transactionService.getVirtualCardTransactions(id, Status.CLEARED), HttpStatus.OK);
     }
 
 }

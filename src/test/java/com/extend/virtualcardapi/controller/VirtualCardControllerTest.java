@@ -66,7 +66,7 @@ public class VirtualCardControllerTest {
         transactions[0] = firstTransaction;
         transactions[1] = secondTransaction;
 
-        when(transactionService.getVirtualCardTransactions(any())).thenReturn(transactions);
+        when(transactionService.getVirtualCardTransactions(any(), any())).thenReturn(transactions);
         ResponseEntity<Transaction[]> responseEntity = virtualCardController.getTransactions("tin's vc id");
         Transaction[] transactionsFromResponse = responseEntity.getBody();
 
